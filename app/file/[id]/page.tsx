@@ -208,7 +208,7 @@ export default function FilePage({ params }: { params: Promise<{ id: string }> }
         {fileData.type === "image" && (
           <div className="flex justify-center">
             <img 
-              src={`/api/files/preview/dummy?file=${encodeURIComponent(fileData.name)}`} 
+              src={`/api/files/preview/dummy?file=${encodeURIComponent(fileData.name)}${isAdminView && adminUserId ? `&admin=true&user=${adminUserId}` : ''}`} 
               alt={fileData.name} 
               className="max-w-full max-h-[80vh] object-contain rounded border"
             />
@@ -218,7 +218,7 @@ export default function FilePage({ params }: { params: Promise<{ id: string }> }
         {fileData.type === "video" && (
           <div className="flex justify-center">
             <video controls className="max-w-full max-h-[80vh] rounded border">
-              <source src={`/api/files/preview/dummy?file=${encodeURIComponent(fileData.name)}`} />
+              <source src={`/api/files/preview/dummy?file=${encodeURIComponent(fileData.name)}${isAdminView && adminUserId ? `&admin=true&user=${adminUserId}` : ''}`} />
               Your browser does not support video playback.
             </video>
           </div>
@@ -227,7 +227,7 @@ export default function FilePage({ params }: { params: Promise<{ id: string }> }
         {fileData.type === "audio" && (
           <div className="flex justify-center py-20">
             <audio controls className="w-full max-w-md">
-              <source src={`/api/files/preview/dummy?file=${encodeURIComponent(fileData.name)}`} />
+              <source src={`/api/files/preview/dummy?file=${encodeURIComponent(fileData.name)}${isAdminView && adminUserId ? `&admin=true&user=${adminUserId}` : ''}`} />
               Your browser does not support audio playback.
             </audio>
           </div>
@@ -235,7 +235,7 @@ export default function FilePage({ params }: { params: Promise<{ id: string }> }
 
         {fileData.type === "pdf" && (
           <iframe 
-            src={`/api/files/preview/dummy?file=${encodeURIComponent(fileData.name)}`} 
+            src={`/api/files/preview/dummy?file=${encodeURIComponent(fileData.name)}${isAdminView && adminUserId ? `&admin=true&user=${adminUserId}` : ''}`} 
             className="w-full h-[80vh] rounded border" 
             title={fileData.name} 
           />
